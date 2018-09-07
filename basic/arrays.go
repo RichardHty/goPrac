@@ -98,5 +98,40 @@ func main() {
 	// s4:={4,5,10,10,10}
 	// arr2:=[0 1 2 3 4 5 10 10](unchanged)
 
+	// slice initialization
+	// s6 knows len but not initial values
+	s6 := make([]int, 4)
+	fmt.Println(s6)
+	//s6 knows cap but not initial values
+	s7 := make([]int, 10, 32)
+	fmt.Println(s7)
+
+	// delete from slice
+	s4 = append(s4[:2],s6[3:]...)
+	fmt.Println(s4)
+
+	m := map[string][]int {
+		"name": s4,
+		"okay": s5,
+	}
+
+	mm := make(map[string]int)
+	fmt.Println(mm)
+
+	// delete elem in map
+	delete(m,"name")
+
+	if val, ok := m["name"]; ok {
+		fmt.Println(val)
+	} else {
+		fmt.Println("not exists")
+	}
+
+	for k, v := range m{
+		// the order is not guaranteed
+		fmt.Println(k, v)
+	}
+
+	// besides slice, map, function, all types, even Struct, can be key
 }
 
